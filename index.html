@@ -1,0 +1,283 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>secrets_Basilato 🎀</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+<div class="app">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-icon">🎀</span>
+      <h2>secrets_<span>Basilato</span></h2>
+      <p>your pink universe</p>
+    </div>
+
+    <nav>
+      <p class="nav-label">MEU ESPAÇO</p>
+      <button class="nav-btn active" data-page="home">🏠 Início</button>
+      <button class="nav-btn" data-page="study">📚 Cronograma</button>
+      <button class="nav-btn" data-page="calendar">🗓️ Calendário</button>
+      <button class="nav-btn" data-page="tasks">📝 Minhas tarefas</button>
+      <button class="nav-btn" data-page="goals">🦢 My Goals</button>
+
+      <p class="nav-label">PERSONALIZAÇÃO</p>
+      <button class="nav-btn" data-page="settings">⚙️ Configurações</button>
+    </nav>
+
+    <div class="sidebar-bottom">
+      <div class="pink-note">
+        <span>💗</span>
+        <p>You can do it, princess!</p>
+      </div>
+      <small>Made with love 🎀</small>
+    </div>
+  </aside>
+
+  <main class="main">
+
+    <header class="topbar">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <div>
+        <span class="top-date" id="headerDate"></span>
+        <h3>My pink planner <span>♡</span></h3>
+      </div>
+      <div class="clock" id="clock">00:00:00</div>
+    </header>
+
+    <!-- INÍCIO -->
+    <section class="page active" id="home">
+      <div class="welcome">
+        <div>
+          <span class="eyebrow">WELCOME TO YOUR WORLD ✨</span>
+          <h1>Hello, princesa!<br>Seja bem-vinda ao seu cantinho 💗</h1>
+          <p id="motivation">Pequenos passos também realizam grandes sonhos.</p>
+        </div>
+        <div class="welcome-decoration">🎀</div>
+      </div>
+
+      <div class="section-heading">
+        <h2>Seu resumo de hoje</h2>
+        <span>Everything is possible ♡</span>
+      </div>
+
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span>📝</span>
+          <p>Tarefas de hoje</p>
+          <h2 id="todayTasks">0</h2>
+        </article>
+        <article class="stat-card">
+          <span>📚</span>
+          <p>Estudos concluídos</p>
+          <h2 id="completedStudies">0</h2>
+        </article>
+        <article class="stat-card">
+          <span>🎀</span>
+          <p>Metas em andamento</p>
+          <h2 id="activeGoals">0</h2>
+        </article>
+        <article class="stat-card">
+          <span>✨</span>
+          <p>Produtividade</p>
+          <h2 id="productivity">0%</h2>
+        </article>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="panel">
+          <div class="panel-heading">
+            <h3>💗 Minha produtividade</h3>
+            <span id="progressLabel">0%</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" id="dailyProgress"></div>
+          </div>
+          <p class="soft-text">Continue assim, princess!</p>
+        </article>
+
+        <article class="panel">
+          <div class="panel-heading">
+            <h3>🌷 Próximos compromissos</h3>
+          </div>
+          <div id="upcomingEvents" class="empty">
+            Nenhum compromisso cadastrado ♡
+          </div>
+        </article>
+      </div>
+
+      <article class="panel inspiration">
+        <span>🦢 DAILY INSPIRATION</span>
+        <h2>Meus sonhos estão se tornando realidade.</h2>
+        <p>Eu sou capaz, eu sou suficiente e mereço tudo de lindo que estou construindo. 💗</p>
+      </article>
+    </section>
+
+    <!-- CRONOGRAMA -->
+    <section class="page" id="study">
+      <div class="page-title">
+        <div>
+          <span class="eyebrow">STUDY WITH LOVE 📚</span>
+          <h1>Meu cronograma</h1>
+          <p>Organize seus estudos e conquiste seus objetivos.</p>
+        </div>
+        <button class="primary-btn" id="addStudy">+ Nova matéria</button>
+      </div>
+
+      <article class="panel">
+        <div class="panel-heading">
+          <h3>🎀 Progresso dos estudos</h3>
+          <strong id="studyPercent">0%</strong>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="studyProgress"></div>
+        </div>
+      </article>
+
+      <div id="studyList" class="item-list"></div>
+    </section>
+
+    <!-- CALENDÁRIO -->
+    <section class="page" id="calendar">
+      <div class="page-title">
+        <div>
+          <span class="eyebrow">PLAN YOUR DAYS 🗓️</span>
+          <h1>Meu calendário</h1>
+          <p>Todos os seus momentos importantes em um só lugar.</p>
+        </div>
+        <button class="primary-btn" id="addEvent">+ Novo evento</button>
+      </div>
+
+      <article class="panel">
+        <div class="calendar-header">
+          <button class="circle-btn" id="prevMonth">‹</button>
+          <h2 id="monthTitle"></h2>
+          <button class="circle-btn" id="nextMonth">›</button>
+        </div>
+        <div class="calendar-grid" id="calendarGrid"></div>
+      </article>
+
+      <article class="panel">
+        <h3 id="selectedDateTitle">Compromissos do dia</h3>
+        <div id="dayEvents" class="empty">Selecione um dia ♡</div>
+      </article>
+    </section>
+
+    <!-- TAREFAS -->
+    <section class="page" id="tasks">
+      <div class="page-title">
+        <div>
+          <span class="eyebrow">GET THINGS DONE ✨</span>
+          <h1>Minhas tarefas</h1>
+          <p>Um passo de cada vez, princesa!</p>
+        </div>
+        <button class="primary-btn" id="addTask">+ Nova tarefa</button>
+      </div>
+
+      <div class="filters">
+        <select id="filterStatus">
+          <option value="all">Todos os status</option>
+          <option value="todo">A fazer</option>
+          <option value="doing">Em andamento</option>
+          <option value="done">Concluídas</option>
+        </select>
+        <select id="filterPriority">
+          <option value="all">Todas as prioridades</option>
+          <option value="alta">Alta</option>
+          <option value="media">Média</option>
+          <option value="baixa">Baixa</option>
+        </select>
+        <input type="date" id="filterDate">
+      </div>
+
+      <div class="task-columns">
+        <div class="task-column">
+          <h3>💗 A fazer</h3>
+          <div id="todoList"></div>
+        </div>
+        <div class="task-column">
+          <h3>🎀 Em andamento</h3>
+          <div id="doingList"></div>
+        </div>
+        <div class="task-column">
+          <h3>✨ Concluídas</h3>
+          <div id="doneList"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METAS -->
+    <section class="page" id="goals">
+      <div class="page-title">
+        <div>
+          <span class="eyebrow">DREAM BIG, PRINCESS 🦢</span>
+          <h1>My Goals</h1>
+          <p>Meus sonhos estão se tornando realidade.</p>
+        </div>
+        <button class="primary-btn" id="addGoal">+ Nova meta</button>
+      </div>
+
+      <div id="goalList" class="goal-grid"></div>
+
+      <article class="panel inspiration">
+        <span>💌 A LITTLE REMINDER</span>
+        <h2>Você está florescendo no seu próprio tempo.</h2>
+        <p>Não desista de você. Cada conquista começa com uma pequena decisão.</p>
+      </article>
+    </section>
+
+    <!-- CONFIGURAÇÕES -->
+    <section class="page" id="settings">
+      <div class="page-title">
+        <div>
+          <span class="eyebrow">MAKE IT YOURS 🎀</span>
+          <h1>Configurações</h1>
+          <p>Cuide do seu mundinho rosa.</p>
+        </div>
+      </div>
+
+      <article class="panel settings-panel">
+        <h3>💗 Meu planner</h3>
+        <label>Nome que aparece na saudação</label>
+        <input id="userName" placeholder="Princesa">
+        <button class="primary-btn" id="saveSettings">Salvar alterações</button>
+      </article>
+
+      <article class="panel settings-panel">
+        <h3>💾 Meus dados</h3>
+        <p>Suas informações são salvas neste navegador.</p>
+        <button class="secondary-btn" id="exportData">Exportar meus dados</button>
+        <button class="danger-btn" id="clearData">Apagar todos os dados</button>
+      </article>
+    </section>
+
+  </main>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <button class="close-modal" id="closeModal">×</button>
+    <span class="eyebrow">A LITTLE ORGANIZATION ♡</span>
+    <h2 id="modalTitle">Adicionar</h2>
+    <form id="modalForm">
+      <div id="modalFields"></div>
+      <button class="primary-btn full-btn" type="submit">Salvar 💗</button>
+    </form>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>
